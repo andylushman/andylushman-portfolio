@@ -453,7 +453,14 @@ h1, h2, h3, h4, h5, h6{
 ///////////////////////////////////////////////////////////////////////*/
 
 
-#footer{ background: #2B3E51; color: white;}
+#footer {
+	background: #2B3E51; color: white;
+	padding: 10px;
+}
+
+#footer-title {
+	color: white;
+}
 
 
 
