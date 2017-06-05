@@ -273,18 +273,42 @@
 					<section class="block-body">
 						<div class="row">
 							<div class="col-md-6 col-md-offset-3">
-								<form class="" role="form">
-										<div class="form-group">
-								    	<input type="text" class="form-control form-control-white" id="subject" placeholder="Your Name" required>
-								  	</div>
-								    <div class="form-group">
-								    	<input type="email" class="form-control form-control-white" id="exampleInputEmail2" placeholder="Enter email" required>
-								    </div>
-								    <div class="form-group">
-								    	<textarea class="form-control form-control-white" placeholder="Write Something" required></textarea>
-								    </div>
-								  <input type="submit" class="btn btn-o-white" value="Say Hello">
-								</form>
+								<?php
+								$action=$_REQUEST['action'];
+								if ($action=="")    /* display the contact form */
+								    {
+								    ?>
+								    <form action="" method="POST" enctype="multipart/form-data" class="" role="form">
+								        <div class="form-group">
+								          <input name="name" type="text" class="form-control form-control-white" id="subject" placeholder="Your Name" required>
+								        </div>
+								        <div class="form-group">
+								          <input name="email" type="text" class="form-control form-control-white" id="exampleInputEmail2" placeholder="Enter email" required>
+								        </div>
+								        <div class="form-group">
+								          <textarea name="message" class="form-control form-control-white" placeholder="Write Something" required></textarea>
+								        </div>
+								      <input type="submit" class="btn btn-o-white" value="Say Hello">
+								    </form>
+								    <?php
+								    }
+								else                /* send the submitted data */
+								    {
+								    $name=$_REQUEST['name'];
+								    $email=$_REQUEST['email'];
+								    $message=$_REQUEST['message'];
+								    if (($name=="")||($email=="")||($message==""))
+								        {
+								        echo "All fields are required, please fill <a href=\"\">the form</a> again.";
+								        }
+								    else{
+								        $from="From: $name<$email>\r\nReturn-path: $email";
+								        $subject="Message sent using your contact form";
+								        mail("hello@andylushman.com", $subject, $message, $from);
+								        echo "Email sent!";
+								        }
+								    }
+								?>
 							</div>
 						</div>
 					</section>
