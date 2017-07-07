@@ -447,6 +447,10 @@ h1, h2, h3, h4, h5, h6{
 	width: 400px;
 }
 
+.modal-content p {
+	margin: 0 0 5px 0;
+}
+
 .modal-footer {
 	background-color: #475b6f;
 }
